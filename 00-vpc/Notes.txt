@@ -1,0 +1,28 @@
+After VPC and other setup is created via TERRAFORM-AWS-VPC and called here via module, 
+Now create one security group with only outbound access under our VPC and create a EC2 instance and map it to roboshop-dev-private-us-east-1a subnet.
+
+we get only private ip as its launched in private subnet
+
+Now create one more SG with only outbound access and create one EC2 ibnstance and map to any subnet, here also 
+we get only private ip as its launched in private subnet.
+
+Now check Peering connections in VPC and requester VPC->roboshop-dev(10.0.0.0/16) is connected to acceptor VPC ->default(172.31.0.0/16).
+
+and also in Route tables, acceptor VPC named default (172.31.0.0/16) has connection with requester VPC named roboshop-dev (10.0.0.0/16) 
+and vice-versa, i.e. requester VPC named roboshop-dev (10.0.0.0/16) related named route tables such as roboshop-dev-database, 
+roboshop-dev-private and roboshop-dev-public has connection with acceptor VPC named default (172.31.0.0/16).
+
+
+Bastion/Jump Host - An instance in public subnet to connect to Ec2 instances in private subnets for security purpose.
+
+create a ec2 instance with name bastion and also create security group with inbound as My IP address, search in net for your IP address 
+and give it, this is used so that only you can login to bastion ec2 instance.
+
+Now go to roboshop-dev ec2 instance and edit sg and in inbound rules, give type as SSH, port 22 and give bastion IP private address
+but if bastion ec2 instance is deleted, then again its private IP address will change, then it is difficult to change Ip address in all SG, 
+hence give bastion SG directly in source instead of bastion IP private address.
+
+check telnet 10.0.21.155 22 to verify if roboshop-dev ec2 instance will accept traffic from port 22 which has roboshop-dev-bastion SG.
+
+Connect to roboshop-dev EC2 instance and try to connect to default EC2 instance using telnet 172.31.11.82 22, 
+Before that in default instance related default SG, give roboshop-dev SG  as source for it to connect to default EC2 instance.
