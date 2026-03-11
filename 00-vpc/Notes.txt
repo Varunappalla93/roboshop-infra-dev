@@ -24,5 +24,5 @@ hence give bastion SG directly in source instead of bastion IP private address.
 
 check telnet 10.0.21.155 22 to verify if roboshop-dev ec2 instance will accept traffic from port 22 which has roboshop-dev-bastion SG.
 
-Connect to roboshop-dev EC2 instance and try to connect to default EC2 instance using telnet 172.31.11.82 22, 
-Before that in default instance related default SG, give roboshop-dev SG  as source for it to connect to default EC2 instance.
+Connect to roboshop-dev EC2 instance and try to connect to default EC2 instance using telnet 172.31.11.82 22 for peering purpose, 
+But before that in default instance related default SG, give roboshop-dev SG as source for it to connect to default EC2 instance.
