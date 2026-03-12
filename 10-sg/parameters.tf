@@ -1,5 +1,6 @@
 # Day 38
 
+# creates ssm parameter, eg: 
 resource "aws_ssm_parameter" "mongodb_sg_id" {
   name  = "/${var.project}/${var.env}/mongodb_sg_id"
   type  = "String"
