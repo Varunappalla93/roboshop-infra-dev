@@ -1,4 +1,4 @@
-# Day 38
+# Day 38 and 39
 variable "project" {
   default = "roboshop"
 }
@@ -8,3 +8,10 @@ variable "env" {
   default = "dev"
 }
 
+
+variable "sg_names" {
+  type = list(any)
+  # DB, BE, BE and FE ALB, bastion
+  default = ["mongodb", "redis", "mysql", "rabbitmq", "catalogue", "user", "cart", "shipping", "payment", "backend_ALB", "frontend", "frontend_ALB",
+  "bastion"]
+}

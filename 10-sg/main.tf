@@ -1,9 +1,10 @@
-# Day 38
+# Day 38 and 39
 
 module "sg" {
-  source = "../../Terraform-aws-sg"
+  count   = length(var.sg_names)
+  source  = "../../Terraform-aws-sg"
   project = var.project
-  env=var.env
-  sg_name = "mongodb"
-  vpc_id= local.vpc_id
+  env     = var.env
+  sg_name = replace(var.sg_names[count.index], "_", "-")
+  vpc_id  = local.vpc_id
 }
