@@ -1,4 +1,4 @@
-# Day 39
+# Day 39 and 40
 
 resource "aws_instance" "bastion" {
   ami                    = local.ami_id
