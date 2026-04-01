@@ -23,7 +23,7 @@ Now go to roboshop-dev ec2 instance and edit SG and in inbound rules, add a rule
 but if bastion ec2 instance is deleted, then again its private IP address will change, then it is difficult to change IP address in all SG, 
 hence give bastion SG name directly in source instead of bastion IP private address.
 
-Now check telnet eg: <roboshop-dev-ec2-instance-privateip> <portno>, eg:10.0.21.155 22 to verify if roboshop-dev ec2 
+Now in bastion ec2 instance, check telnet eg: <roboshop-dev-ec2-instance-privateip> <portno>, eg:10.0.21.155 22 to verify if roboshop-dev ec2 
 instance will accept traffic from port 22 which has instance, i.e. here Bastion ec2 instance attached to roboshop-dev-bastion SG.
 
 Now you can login to roboshop-dev ec2 instance using ssh ec2-user@<privateipaddress> and 
