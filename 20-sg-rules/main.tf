@@ -5,15 +5,16 @@ resource "aws_security_group_rule" "bastion_internet" {
   from_port   = 22
   to_port     = 22
   protocol    = "tcp"
-#   cidr_blocks = ["0.0.0.0/0"]
+  cidr_blocks = ["0.0.0.0/0"]
   # or
-    cidr_blocks = [local.my_ip]
+    # cidr_blocks = [local.my_ip]
+
   # which SG you are creating this rule
   security_group_id = local.bastion_sg_id
 }
 
 
-
+# mongodb accepting connection from bastion
 resource "aws_security_group_rule" "mongodb_bastion" {
   type        = "ingress"
   from_port   = 22
@@ -21,6 +22,7 @@ resource "aws_security_group_rule" "mongodb_bastion" {
   protocol    = "tcp"
   # where traffic is coming from
   source_security_group_id = local.bastion_sg_id
+  # where to insert it
   security_group_id        = local.mongodb_sg_id
 }
 
@@ -35,7 +37,7 @@ resource "aws_security_group_rule" "mongodb_catalogue" {
 }
 
 
-
+# mongodb accepting connection from user
 resource "aws_security_group_rule" "mongodb_user" {
   type                     = "ingress"
   from_port                = 27017

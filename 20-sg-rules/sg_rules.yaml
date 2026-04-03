@@ -1,13 +1,13 @@
 # Day 39
 
 bastion:
-- name: bastion_internet
+- name: bastion_internet # bastion accepts connections from internet
   port: 22
   src: internet
   dest: bastion
 
 mongodb:
-- name: mongodb_bastion
+- name: mongodb_bastion # mongodb accepts connections from bastion
   port: 22
   src: bastion
   dest: mongodb
