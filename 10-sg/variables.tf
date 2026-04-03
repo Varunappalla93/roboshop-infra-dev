@@ -11,7 +11,7 @@ variable "env" {
 
 variable "sg_names" {
   type = list(any)
-  # DB, BE, BE and FE ALB, bastion
+  # DB, BE, BE, BE ALB, FE, FE ALB, bastion
   default = ["mongodb", "redis", "mysql", "rabbitmq", "catalogue", "user", "cart", "shipping", "payment", "backend_ALB", "frontend", "frontend_ALB",
   "bastion"]
 }
