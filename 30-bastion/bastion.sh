@@ -1,5 +1,3 @@
-# Day 40
-
 #!/bin/bash
 
 # We are creating 50GB root disk, but only 20GB is partitioned
