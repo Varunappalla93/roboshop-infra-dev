@@ -16,7 +16,7 @@ resource "aws_instance" "mongodb" {
   )
 }
 
-
+# follows standard resource life cycle, use this to configure instance using local/remote exec.
 resource "terraform_data" "mongodb" {
   triggers_replace = [
     aws_instance.mongodb.id
