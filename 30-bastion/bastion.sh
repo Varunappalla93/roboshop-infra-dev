@@ -12,7 +12,6 @@ yum install -y yum-utils
 yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
 yum -y install terraform
 
-
 # creating databases
 cd /home/ec2-user
 git clone https://github.com/daws-88s/roboshop-infra-dev.git
