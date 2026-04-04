@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Day 40
+
 # We are creating 50GB root disk, but only 20GB is partitioned
 # Remaining 30GB we need to extend using below commands
 growpart /dev/nvme0n1 4
