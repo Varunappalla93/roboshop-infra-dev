@@ -8,24 +8,9 @@ growpart /dev/nvme0n1 4
 lvextend -r -L +30G /dev/mapper/RootVG-homeVol
 xfs_growfs /home
 
-# Install Terraform manually (bypass yum issue)
-cd /tmp
-curl -LO https://releases.hashicorp.com/terraform/1.7.5/terraform_1.7.5_linux_amd64.zip
-
-# unzip may fail if yum is broken, so ignore failure
-yum install -y unzip || true
-
-unzip -o terraform_1.7.5_linux_amd64.zip
-mv terraform /usr/local/bin/
-chmod +x /usr/local/bin/terraform
-
-# Verify installation
-terraform -v
-
-
-# yum install -y yum-utils
-# yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
-# yum -y install terraform
+yum install -y yum-utils
+yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+yum -y install terraform
 
 # creating databases
 cd /home/ec2-user
