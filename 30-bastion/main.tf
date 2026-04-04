@@ -6,7 +6,7 @@ resource "aws_instance" "bastion" {
   subnet_id              = local.public_subnet_id
   vpc_security_group_ids = [local.bastion_sg_id]
   iam_instance_profile   = aws_iam_instance_profile.bastion.name
-  user_data = file("bastion.sh") #inside var/log, sudo less cloud-init-output.log to check if tf in installed and size is added
+  user_data = file("bastion.sh") #inside var/log, sudo less cloud-init-output.log to check if tf is installed and size is added
 
   root_block_device {
     volume_size = 50
