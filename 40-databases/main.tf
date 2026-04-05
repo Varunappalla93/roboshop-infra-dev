@@ -1,4 +1,4 @@
-# Day 40
+# Day 40 and 41
 
 resource "aws_instance" "mongodb" {
   ami                    = local.ami_id

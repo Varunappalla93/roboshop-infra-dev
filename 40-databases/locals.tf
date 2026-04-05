@@ -1,4 +1,4 @@
-# Day 40
+# Day 40 and 41
 
 locals {
   ami_id = data.aws_ami.joindevops.id
