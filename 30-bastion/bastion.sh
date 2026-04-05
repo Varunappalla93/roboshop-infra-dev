@@ -6,10 +6,10 @@
 # Remaining 30GB we need to extend using below commands
 
 # Need to use sudo access for bastion script to work 
-growpart /dev/nvme0n1 4
-lvextend -r -L +30G /dev/mapper/RootVG-homeVol
-xfs_growfs /home
+sudo growpart /dev/nvme0n1 4
+sudo lvextend -r -L +30G /dev/mapper/RootVG-homeVol
+sudo xfs_growfs /home
 
-yum install -y yum-utils
-yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
-yum -y install terraform
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+sudo yum -y install terraform
