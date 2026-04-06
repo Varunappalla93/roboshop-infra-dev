@@ -69,6 +69,7 @@ resource "aws_security_group_rule" "mysql_bastion" {
 }
 
 
+# RabbitMQ
 resource "aws_security_group_rule" "rabbitmq_bastion" {
   type              = "ingress"
   from_port         = 22

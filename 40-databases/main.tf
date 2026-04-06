@@ -138,7 +138,7 @@ resource "aws_instance" "rabbitmq" {
   )
 }
 
-resource "terraform_data" "bootstrap_rabbitmq" {
+resource "terraform_data" "rabbitmq" {
   triggers_replace = [
     aws_instance.rabbitmq.id
   ]
