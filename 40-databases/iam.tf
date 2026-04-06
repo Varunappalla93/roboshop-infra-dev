@@ -3,7 +3,6 @@
 # Create IAM Role , attach policy to role to fetch SSM parameter of mySQL password and create 
 # instance profile and attach to mysql instance.
 
-
 resource "aws_iam_role" "mysql" {
   name = local.mysql_role_name #Roboshop-Dev-Mysql
 
