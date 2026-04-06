@@ -125,14 +125,14 @@ resource "terraform_data" "bootstrap_mysql" {
 
 
 resource "aws_instance" "rabbitmq" {
-  ami                    = local.ami_id
-  instance_type          = "t3.micro"
-  subnet_id              = local.database_subnet_id
+  ami           = local.ami_id
+  instance_type = "t3.micro"
+  subnet_id = local.database_subnet_id
   vpc_security_group_ids = [local.rabbitmq_sg_id]
 
   tags = merge(
     {
-      Name = "${var.project}-${var.env}-rabbitmq"
+        Name = "${var.project}-${var.env}-rabbitmq"
     },
     local.common_tags
   )
@@ -151,14 +151,14 @@ resource "terraform_data" "bootstrap_rabbitmq" {
   }
 
   provisioner "file" {
-    source      = "bootstrap.sh"      # Local file path
-    destination = "/tmp/bootstrap.sh" # Destination path on the remote machine
+    source      = "bootstrap.sh" # Local file path
+    destination = "/tmp/bootstrap.sh"    # Destination path on the remote machine
   }
 
   provisioner "remote-exec" {
     inline = [
-      "chmod +x /tmp/bootstrap.sh",
-      "sudo sh /tmp/bootstrap.sh rabbitmq dev"
+        "chmod +x /tmp/bootstrap.sh",
+        "sudo sh /tmp/bootstrap.sh rabbitmq ${var.env}"
     ]
   }
 }
