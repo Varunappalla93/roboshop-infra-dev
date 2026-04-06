@@ -1,4 +1,4 @@
-# Day 39
+# Day 39, 40 and 41
 
 resource "aws_security_group_rule" "bastion_internet" {
   type        = "ingress"

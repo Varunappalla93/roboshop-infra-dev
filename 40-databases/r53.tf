@@ -1,4 +1,4 @@
-# Day 40
+# Day 40 and 41
 
 resource "aws_route53_record" "mongodb" {
   zone_id         = var.zone_id
