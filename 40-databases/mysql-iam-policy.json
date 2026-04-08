@@ -5,7 +5,7 @@
         "Sid": "SSMAccess",
         "Effect": "Allow",
         "Action": [
-          "ssm:GetParameter",
+          "ssm:GetParameters",
           "ssm:DescribeParameters"
         ],
         "Resource": "arn:aws:ssm:us-east-1:931163289790:parameter/roboshop/${environment}/mysql_root_password"
