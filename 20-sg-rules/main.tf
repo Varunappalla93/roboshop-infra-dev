@@ -1,4 +1,4 @@
-# Day 39, 40 and 41
+# Day 39, 40, 41, 42
 
 resource "aws_security_group_rule" "bastion_internet" {
   type        = "ingress"
@@ -80,10 +80,19 @@ resource "aws_security_group_rule" "rabbitmq_bastion" {
   security_group_id = local.rabbitmq_sg_id
 }
 
-resource "aws_security_group_rule" "backend_alb_sg_id" {
+# load balancer -> 80 - http, 443 - https
+# target group - group of instances
+# launch template - template to launch instances
+# autoscaling - uses launch template as input, can trigger instance if CPU utilisation is more than 70%
+# rules - catalogue.* - redirects to catalogue target group
+# health check - check instance is available or not
+# Application LB is better than classic LB
+
+#backend alb accepting traffic from bastion
+resource "aws_security_group_rule" "backend_alb_bastion" {
   type              = "ingress"
-  from_port         = 22
-  to_port           = 22
+  from_port         = 80
+  to_port           = 80
   protocol          = "tcp"
   # Where traffic is coming from
   source_security_group_id = local.bastion_sg_id
@@ -91,3 +100,23 @@ resource "aws_security_group_rule" "backend_alb_sg_id" {
 }
 
 
+resource "aws_security_group_rule" "catalogue_bastion" {
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  # Where traffic is coming from
+  source_security_group_id = local.bastion_sg_id
+  security_group_id = local.catalogue_sg_id
+}
+
+
+resource "aws_security_group_rule" "catalogue_backend_alb" {
+  type              = "ingress"
+  from_port         = 8080
+  to_port           = 8080
+  protocol          = "tcp"
+  # Where traffic is coming from
+  source_security_group_id = local.backend_alb_sg_id
+  security_group_id = local.catalogue_sg_id
+}
