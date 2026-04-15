@@ -1,4 +1,4 @@
-# Day 43
+# Day 43 and 44
 
 resource "aws_instance" "catalogue" {
   ami           = local.ami_id
