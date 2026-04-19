@@ -4,7 +4,7 @@ locals {
     ami_id =  data.aws_ami.openvpn.id
     common_tags = {
         Project = var.project
-        Environment = var.environment
+        Environment = var.env
         Terraform = "true"
     }
     # public subnet in 1a AZ

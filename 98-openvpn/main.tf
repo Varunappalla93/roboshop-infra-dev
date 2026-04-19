@@ -9,7 +9,7 @@ resource "aws_instance" "openvpn" {
 
   tags = merge(
     {
-        Name = "${var.project}-${var.environment}-openvpn"
+        Name = "${var.project}-${var.env}-openvpn"
     },
     local.common_tags
   )
